@@ -2,14 +2,19 @@
   "name": "chat-box",
   "version": "1.0.0",
   "description": "chat-box using socket.io",
-  "main": "index.js",
+  "main": "server.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "Lucas Sobczak",
   "license": "MIT",
   "dependencies": {
     "express": "^4.19.2",
-    "socket.io": "^4.7.5"
+    "socket.io": "^4.7.5",
+    "socket.io-client": "^4.7.5",
+    "webpack": "^5.93.0",
+    "webpack-cli": "^5.1.4"
   }
 }
