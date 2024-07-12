@@ -21,5 +21,9 @@ app.get("/", (req, res) => {
 });
 
 io.on("connection", (socket) => {
-  socket.on("msg", (msg) => console.log(msg));
+  socket.emit("welcome", "welcome to the server");
+  socket.join("room1");
+  socket.on("message", (message) => {
+    io.to("room1").emit("receiveMessage", message);
+  });
 });
