@@ -14,12 +14,12 @@ const server = app.listen(PORT, () => {
 
 const io = new Server(server, options);
 
-app.use(express.static("./src"));
+app.use(express.static("./dist"));
 
 app.get("/", (req, res) => {
   res.sendFile("index.html");
 });
 
 io.on("connection", (socket) => {
-  console.log("someone connected to the socket server");
+  socket.on("msg", (msg) => console.log(msg));
 });
