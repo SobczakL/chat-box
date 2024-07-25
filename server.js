@@ -21,9 +21,12 @@ app.get("/", (req, res) => {
 });
 
 io.on("connection", (socket) => {
-  socket.emit("welcome", "welcome to the server");
+  socket.emit("welcome", socket.id);
   socket.join("room1");
-  socket.on("message", (message) => {
-    io.to("room1").emit("receiveMessage", message);
+  socket.on("message", message => {
+    io.to("room1").emit("receiveMessage", {
+      userId: socket.id,
+      message: message
+    });
   });
 });
